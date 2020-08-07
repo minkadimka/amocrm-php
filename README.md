@@ -27,13 +27,13 @@ https://web.archive.org/web/20170801033744/https://developers.amocrm.ru/rest_api
 ### Через composer:
 
 ```bash
-$ composer require dotzero/amocrm
+$ composer require minkadimka/amocrm
 ```
 
 или добавить
 
 ```json
-"dotzero/amocrm": "0.3.*"
+"minkadimka/amocrm": "0.3.*"
 ```
 
 в секцию `require` файла composer.json.

@@ -156,6 +156,10 @@ class Request
             'Content-Type: application/json',
         ];
 
+        if ($this->parameters->getAuth('authType') == 'oauth2') {
+          $headers[] = 'Authorization: Bearer ' . $this->parameters->getAuth('accessToken');
+        }
+
         if ($modified !== null) {
             if (is_int($modified)) {
                 $headers[] = 'IF-MODIFIED-SINCE: ' . $modified;
@@ -175,7 +179,11 @@ class Request
      */
     protected function prepareEndpoint($url)
     {
-        if ($this->v1 === false) {
+        if ($this->parameters->getAuth('authType') == 'oauth2') {
+          $query = http_build_query($this->parameters->getGet());
+          echo 'query: ' . $query;
+        }
+        elseif ($this->v1 === false) {
             $query = http_build_query(array_merge($this->parameters->getGet(), [
                 'USER_LOGIN' => $this->parameters->getAuth('login'),
                 'USER_HASH' => $this->parameters->getAuth('apikey'),
