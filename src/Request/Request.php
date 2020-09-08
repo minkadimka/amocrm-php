@@ -181,7 +181,6 @@ class Request
     {
         if ($this->parameters->getAuth('authType') == 'oauth2') {
           $query = http_build_query($this->parameters->getGet());
-          echo 'query: ' . $query;
         }
         elseif ($this->v1 === false) {
             $query = http_build_query(array_merge($this->parameters->getGet(), [
