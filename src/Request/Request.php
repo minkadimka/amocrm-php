@@ -180,7 +180,7 @@ class Request
     protected function prepareEndpoint($url)
     {
         if ($this->parameters->getAuth('authType') == 'oauth2') {
-          $query = http_build_query($this->parameters->getGet());
+          $query = http_build_query( $this->parameters->getGet() );
         }
         elseif ($this->v1 === false) {
             $query = http_build_query(array_merge($this->parameters->getGet(), [
